@@ -1,4 +1,4 @@
-// Billders Map Adventure
+﻿// Billders Map Adventure
 // Renders markers, popups, easter eggs, music toggle, and farewell modal handling.
 
 const team = [
@@ -18,29 +18,22 @@ const team = [
   { name: 'Vignesh', x: 10, y: 60, avatar: 'Vignesh.png', bio: 'Golden dog mascot. Happy-day greetings and six-year heart of the squad.' }
 ];
 
-// --------------------------------------------
-// INITIAL LOAD
-// --------------------------------------------
 window.addEventListener('load', () => {
   const farewellModal = document.getElementById('farewell-modal');
   const farewellCloseBtn = document.getElementById('farewell-close');
   const openPopupBtn = document.getElementById('open-popup-btn');
 
-  // Show modal on load
   farewellModal.classList.remove('hidden');
   farewellModal.style.display = 'flex';
 
-  // Close via button
   farewellCloseBtn.addEventListener('click', closeFarewell);
 
-  // Close via backdrop click
   farewellModal.addEventListener('click', (e) => {
     if (e.target === farewellModal) {
       closeFarewell();
     }
   });
 
-  // Manual popup trigger (for testing)
   if (openPopupBtn) {
     openPopupBtn.addEventListener('click', () => showPopup(team[0]));
   }
@@ -50,18 +43,12 @@ window.addEventListener('load', () => {
   setupMusic();
 });
 
-// --------------------------------------------
-// CLOSE FAREWELL
-// --------------------------------------------
 function closeFarewell() {
   const modal = document.getElementById('farewell-modal');
   modal.classList.add('hidden');
   modal.style.display = 'none';
 }
 
-// --------------------------------------------
-// RENDER MARKERS
-// --------------------------------------------
 function renderMarkers() {
   const container = document.getElementById('markers');
   container.innerHTML = '';
@@ -79,9 +66,6 @@ function renderMarkers() {
   });
 }
 
-// --------------------------------------------
-// POPUP
-// --------------------------------------------
 function showPopup(person) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
@@ -96,11 +80,9 @@ function showPopup(person) {
   `;
 
   popup.classList.remove('hidden');
+  popup.classList.add('show');
 }
 
-// --------------------------------------------
-// MUSIC TOGGLE
-// --------------------------------------------
 let musicPlaying = false;
 let musicAudio = null;
 
@@ -128,13 +110,9 @@ function setupMusic() {
   };
 }
 
-// --------------------------------------------
-// EASTER EGGS
-// --------------------------------------------
 function createEasterEggs() {
   const container = document.getElementById('markers');
 
-  // Codenames tile
   const codeTile = document.createElement('div');
   codeTile.className = 'marker easter';
   codeTile.style.left = '58%';
@@ -143,7 +121,6 @@ function createEasterEggs() {
   codeTile.addEventListener('click', () => showSecret('You discovered a Billders Codenames word: <strong>INVOICE</strong>!'));
   container.appendChild(codeTile);
 
-  // PARIS scroll (Sheri)
   const paris = document.createElement('div');
   paris.className = 'marker easter';
   paris.style.left = '48%';
@@ -152,7 +129,6 @@ function createEasterEggs() {
   paris.addEventListener('click', () => showSecret("Sheri's PARIS scroll: <em>Knowledge is power.</em>"));
   container.appendChild(paris);
 
-  // CA badge (Jarrett)
   const ca = document.createElement('div');
   ca.className = 'marker easter';
   ca.style.left = '52%';
@@ -161,7 +137,6 @@ function createEasterEggs() {
   ca.addEventListener('click', () => showSecret("You found the CA King's badge!"));
   container.appendChild(ca);
 
-  // Sparkles for Vignesh
   const spark = document.createElement('div');
   spark.className = 'marker sparkle';
   spark.style.left = '10%';
@@ -179,13 +154,15 @@ function showSecret(msg) {
       ${msg}
     </div>`;
   popup.classList.remove('hidden');
+  popup.classList.add('show');
 }
 
 function hidePopup() {
-  document.getElementById('popup').classList.add('hidden');
+  const popup = document.getElementById('popup');
+  popup.classList.add('hidden');
+  popup.classList.remove('show');
 }
 
-// Close on ESC or click-outside
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     hidePopup();
@@ -203,7 +180,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Close via overlay or X button
 document.getElementById('popup').addEventListener('click', (e) => {
   if (e.target.id === 'popup') {
     hidePopup();
