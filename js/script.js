@@ -158,3 +158,18 @@ function showSecret(msg) {
 function hidePopup() {
   document.getElementById('popup').classList.add('hidden');
 }
+
+// Close on ESC or click-outside
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') hidePopup();
+});
+
+document.addEventListener('click', (e) => {
+  const popup = document.getElementById('popup');
+  if (popup.classList.contains('hidden')) return;
+  const card = popup.querySelector('.popup-card');
+  const clickedMarker = e.target.classList && e.target.classList.contains('marker');
+  if (card && !card.contains(e.target) && !clickedMarker) {
+    hidePopup();
+  }
+});
