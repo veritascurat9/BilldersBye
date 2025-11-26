@@ -29,7 +29,7 @@ body {
   position: absolute;
   inset: 16px;
   pointer-events: auto;
-  z-index: 150;
+  z-index: 200;
 }
 
 .marker {
@@ -48,6 +48,7 @@ body {
   justify-content: center;
   font-weight: 700;
   color: #4a4a4a;
+  cursor: pointer;
 }
 .marker:hover { transform: translate(-50%, -50%) scale(1.1); }
 .marker:active { animation: clickPulse 0.3s ease-out; }
@@ -93,7 +94,7 @@ body {
   text-align: center;
 }
 #popup .popup-card::after {
-  content: "";
+  content: "*";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -244,7 +245,7 @@ body {
   100% { box-shadow:0 0 6px rgba(255,200,50,0.5); }
 }
 .sparkle::after {
-  content: "✦";
+  content: "*";
   position: absolute;
   font-size: 18px;
   left: 50%;
@@ -274,3 +275,5 @@ body {
   .music-button { padding: 10px 14px; font-size: 15px; }
   .title-banner { font-size: 20px; }
 }
+
+

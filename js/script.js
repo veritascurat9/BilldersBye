@@ -1,6 +1,5 @@
-// Billders Interactive Map - Interactive Farewell
-// ------------------------------------------------
-// Renders markers, popups, easter eggs, music toggle, and modal handling.
+// Billders Map Adventure
+// Renders markers, popups, easter eggs, music toggle, and farewell modal handling.
 
 const team = [
   { name: 'Tammi', x: 15, y: 28, avatar: 'Tammi.png', bio: 'Mint fox and best-friend banter buddy. PARIS/CA whiz and hilarious tester.' },
@@ -8,14 +7,14 @@ const team = [
   { name: 'Rishitha', x: 30, y: 42, avatar: 'Rishitha.png', bio: 'Rose deer, gentle and newly a mom. Mentored by Vignesh; nickname: Samosa.' },
   { name: 'Jarrett', x: 52, y: 18, avatar: 'Jarrett.png', bio: 'Golden owl. CA expert, pun king. Says "document document document".' },
   { name: 'Andrew', x: 60, y: 30, avatar: 'Andrew.png', bio: 'Warm bear manager. Quiet strength and volunteer firefighter.' },
-  { name: 'Danielle', x: 70, y: 40, avatar: 'Danielle.png', bio: 'Peach rabbit PO, ex-tester, Billing knowledge queen. Powerpuff “Bubbles”.' },
+  { name: 'Danielle', x: 70, y: 40, avatar: 'Danielle.png', bio: 'Peach rabbit PO, ex-tester, Billing knowledge queen. Powerpuff "Bubbles".' },
   { name: 'Nicholas', x: 78, y: 22, avatar: 'Nicholas.png', bio: 'Cream beaver. Precise communicator and adaptable tester.' },
   { name: 'Deepesh', x: 40, y: 55, avatar: 'Deepesh.png', bio: 'Lavender elephant. Quiet, steady helper who solves tough problems.' },
   { name: 'Shreyas', x: 55, y: 60, avatar: 'Shreyas.png', bio: 'Grey moose. Calm Canadian Solutions Lead with deep experience.' },
   { name: 'Oleg', x: 65, y: 52, avatar: 'Oleg.png', bio: 'Lilac ferret. Interactive, funny Test Lead; often says "Exactly".' },
   { name: 'Sheri', x: 48, y: 38, avatar: 'Sheri.png', bio: 'Lavender tigress with French beret. PARIS queen and strong mentor.' },
   { name: 'Josh', x: 32, y: 65, avatar: 'Josh.png', bio: 'Sky-blue husky. Bills fan with two kittens; leaving soon too.' },
-  { name: 'Arlene', x: 75, y: 70, avatar: 'Arlene.png', bio: 'Pastel phoenix. Original PO with protective “lioness” energy.' },
+  { name: 'Arlene', x: 75, y: 70, avatar: 'Arlene.png', bio: 'Pastel phoenix. Original PO with protective lioness energy.' },
   { name: 'Vignesh', x: 10, y: 60, avatar: 'Vignesh.png', bio: 'Golden dog mascot. Happy-day greetings and six-year heart of the squad.' }
 ];
 
@@ -23,7 +22,29 @@ const team = [
 // INITIAL LOAD
 // --------------------------------------------
 window.addEventListener('load', () => {
-  document.getElementById('farewell-modal').classList.remove('hidden');
+  const farewellModal = document.getElementById('farewell-modal');
+  const farewellCloseBtn = document.getElementById('farewell-close');
+  const openPopupBtn = document.getElementById('open-popup-btn');
+
+  // Show modal on load
+  farewellModal.classList.remove('hidden');
+  farewellModal.style.display = 'flex';
+
+  // Close via button
+  farewellCloseBtn.addEventListener('click', closeFarewell);
+
+  // Close via backdrop click
+  farewellModal.addEventListener('click', (e) => {
+    if (e.target === farewellModal) {
+      closeFarewell();
+    }
+  });
+
+  // Manual popup trigger (for testing)
+  if (openPopupBtn) {
+    openPopupBtn.addEventListener('click', () => showPopup(team[0]));
+  }
+
   renderMarkers();
   createEasterEggs();
   setupMusic();
@@ -33,15 +54,10 @@ window.addEventListener('load', () => {
 // CLOSE FAREWELL
 // --------------------------------------------
 function closeFarewell() {
-  document.getElementById('farewell-modal').classList.add('hidden');
+  const modal = document.getElementById('farewell-modal');
+  modal.classList.add('hidden');
+  modal.style.display = 'none';
 }
-
-// Close farewell modal on overlay click
-document.getElementById('farewell-modal').addEventListener('click', (e) => {
-  if (e.target.id === 'farewell-modal') {
-    closeFarewell();
-  }
-});
 
 // --------------------------------------------
 // RENDER MARKERS
@@ -55,7 +71,10 @@ function renderMarkers() {
     marker.className = 'marker';
     marker.style.left = `${person.x}%`;
     marker.style.top = `${person.y}%`;
-    marker.onclick = () => showPopup(person);
+    marker.textContent = person.name[0] || '';
+    marker.title = person.name;
+    marker.setAttribute('aria-label', person.name);
+    marker.addEventListener('click', () => showPopup(person));
     container.appendChild(marker);
   });
 }
@@ -120,7 +139,8 @@ function createEasterEggs() {
   codeTile.className = 'marker easter';
   codeTile.style.left = '58%';
   codeTile.style.top = '26%';
-  codeTile.onclick = () => showSecret('You discovered a Billders Codenames word: <strong>INVOICE</strong>!');
+  codeTile.textContent = '*';
+  codeTile.addEventListener('click', () => showSecret('You discovered a Billders Codenames word: <strong>INVOICE</strong>!'));
   container.appendChild(codeTile);
 
   // PARIS scroll (Sheri)
@@ -128,7 +148,8 @@ function createEasterEggs() {
   paris.className = 'marker easter';
   paris.style.left = '48%';
   paris.style.top = '34%';
-  paris.onclick = () => showSecret("Sheri's PARIS scroll: <em>Knowledge is power.</em>");
+  paris.textContent = '*';
+  paris.addEventListener('click', () => showSecret("Sheri's PARIS scroll: <em>Knowledge is power.</em>"));
   container.appendChild(paris);
 
   // CA badge (Jarrett)
@@ -136,7 +157,8 @@ function createEasterEggs() {
   ca.className = 'marker easter';
   ca.style.left = '52%';
   ca.style.top = '14%';
-  ca.onclick = () => showSecret("You found the CA King's badge!");
+  ca.textContent = '*';
+  ca.addEventListener('click', () => showSecret("You found the CA King's badge!"));
   container.appendChild(ca);
 
   // Sparkles for Vignesh
@@ -144,7 +166,8 @@ function createEasterEggs() {
   spark.className = 'marker sparkle';
   spark.style.left = '10%';
   spark.style.top = '56%';
-  spark.onclick = () => showSecret('Sparkle aura activated for Vignesh!');
+  spark.textContent = '*';
+  spark.addEventListener('click', () => showSecret('Sparkle aura activated for Vignesh!'));
   container.appendChild(spark);
 }
 
