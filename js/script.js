@@ -36,6 +36,13 @@ function closeFarewell() {
   document.getElementById('farewell-modal').classList.add('hidden');
 }
 
+// Close farewell modal on overlay click
+document.getElementById('farewell-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'farewell-modal') {
+    closeFarewell();
+  }
+});
+
 // --------------------------------------------
 // RENDER MARKERS
 // --------------------------------------------
@@ -157,7 +164,10 @@ function hidePopup() {
 
 // Close on ESC or click-outside
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') hidePopup();
+  if (e.key === 'Escape') {
+    hidePopup();
+    closeFarewell();
+  }
 });
 
 document.addEventListener('click', (e) => {
