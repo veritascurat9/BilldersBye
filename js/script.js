@@ -69,8 +69,6 @@ function showPopup(person) {
     </div>
   `;
 
-  popup.style.left = '50%';
-  popup.style.top = '50%';
   popup.classList.remove('hidden');
 }
 
@@ -150,8 +148,6 @@ function showSecret(msg) {
       <button class="popup-close" aria-label="Close popup" onclick="hidePopup()">X</button>
       ${msg}
     </div>`;
-  popup.style.left = '50%';
-  popup.style.top = '50%';
   popup.classList.remove('hidden');
 }
 
@@ -172,4 +168,9 @@ document.addEventListener('click', (e) => {
   if (card && !card.contains(e.target) && !clickedMarker) {
     hidePopup();
   }
+});
+
+// Close when clicking overlay background
+document.getElementById('popup').addEventListener('click', (e) => {
+  if (e.target.id === 'popup') hidePopup();
 });
