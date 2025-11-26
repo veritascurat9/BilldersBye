@@ -28,7 +28,7 @@ body {
 #markers {
   position: absolute;
   inset: 16px;
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 150;
 }
 
@@ -43,6 +43,11 @@ body {
   transition: transform .2s, box-shadow .2s;
   animation: markerFadeIn 0.8s ease-out;
   pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #4a4a4a;
 }
 .marker:hover { transform: translate(-50%, -50%) scale(1.1); }
 .marker:active { animation: clickPulse 0.3s ease-out; }
