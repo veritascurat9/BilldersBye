@@ -60,7 +60,7 @@ function showPopup(person) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card">
-      <button class="popup-close" aria-label="Close popup" onclick="hidePopup()">X</button>
+      <button class="popup-close" aria-label="Close popup">×</button>
       <div class="avatar">
         <img src="assets/avatars/${person.avatar}" alt="${person.name} avatar" />
       </div>
@@ -145,7 +145,7 @@ function showSecret(msg) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card" style="text-align:center;">
-      <button class="popup-close" aria-label="Close popup" onclick="hidePopup()">X</button>
+      <button class="popup-close" aria-label="Close popup">×</button>
       ${msg}
     </div>`;
   popup.classList.remove('hidden');
@@ -170,7 +170,13 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Close when clicking overlay background
+// Close via overlay or X button
 document.getElementById('popup').addEventListener('click', (e) => {
-  if (e.target.id === 'popup') hidePopup();
+  if (e.target.id === 'popup') {
+    hidePopup();
+    return;
+  }
+  if (e.target.closest('.popup-close')) {
+    hidePopup();
+  }
 });

@@ -75,9 +75,9 @@ body {
   position: relative;
   min-width: 240px;
   max-width: 300px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 16px;
   box-shadow: 0 10px 26px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.3) inset;
   backdrop-filter: blur(12px);
@@ -86,6 +86,21 @@ body {
   align-items: center;
   gap: 8px;
   text-align: center;
+}
+#popup .popup-card::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 18px;
+  height: 18px;
+  background: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-top: none;
+  border-left: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transform-origin: center;
 }
 #popup .avatar img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
 #popup h3 { margin: 6px 0 2px; font-size: 18px; }
