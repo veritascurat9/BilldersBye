@@ -60,6 +60,7 @@ function showPopup(person) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card">
+      <button class="popup-close" aria-label="Close popup" onclick="hidePopup()">X</button>
       <div class="avatar">
         <img src="assets/avatars/${person.avatar}" alt="${person.name} avatar" />
       </div>
@@ -144,8 +145,16 @@ function createEasterEggs() {
 
 function showSecret(msg) {
   const popup = document.getElementById('popup');
-  popup.innerHTML = `<div class="popup-card" style="text-align:center;">${msg}</div>`;
+  popup.innerHTML = `
+    <div class="popup-card" style="text-align:center;">
+      <button class="popup-close" aria-label="Close popup" onclick="hidePopup()">X</button>
+      ${msg}
+    </div>`;
   popup.style.left = '50%';
   popup.style.top = '50%';
   popup.classList.remove('hidden');
+}
+
+function hidePopup() {
+  document.getElementById('popup').classList.add('hidden');
 }
