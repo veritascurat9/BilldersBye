@@ -33,9 +33,10 @@ body {
 }
 
 .marker {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  min-width: 110px;
+  height: 44px;
+  padding: 4px 10px;
+  border-radius: 22px;
   background: white;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -45,13 +46,51 @@ body {
   pointer-events: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 8px;
   font-weight: 700;
   color: #4a4a4a;
   cursor: pointer;
+  padding-right: 14px;
 }
 .marker:hover { transform: translate(-50%, -50%) scale(1.1); }
 .marker:active { animation: clickPulse 0.3s ease-out; }
+.marker img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.marker .label {
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.player {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  background: #fff url("../assets/Avatars/Vignesh.png") center/cover no-repeat;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  transform: translate(-50%, -50%);
+  z-index: 210;
+  pointer-events: none;
+  animation: markerFadeIn 0.6s ease-out;
+}
+.follower {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: #fff center/cover no-repeat;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.28);
+  transform: translate(-50%, -50%);
+  z-index: 205;
+  pointer-events: none;
+}
 
 /* Easter egg markers */
 .marker.easter { background: #ffe8a8; box-shadow: 0 3px 8px rgba(255,165,0,0.4); animation: eggGlow 5s infinite ease-in-out; }
@@ -263,7 +302,9 @@ body {
 @media (max-width: 768px) {
   #map-container { padding: 12px; }
   #markers { inset: 12px; }
-  .marker { width: 32px; height: 32px; }
+  .marker { min-width: 90px; height: 40px; padding: 4px 8px; }
+  .marker img { width: 28px; height: 28px; }
+  .marker .label { font-size: 12px; }
   #popup { min-width: 200px; max-width: 240px; padding: 14px; }
   .modal-content { max-width: 280px; }
   .title-banner { font-size: 22px; padding: 15px; }
@@ -272,7 +313,9 @@ body {
 @media (max-width: 480px) {
   #map-container { padding: 10px; }
   #markers { inset: 10px; }
-  .marker { width: 28px; height: 28px; }
+  .marker { min-width: 80px; height: 36px; padding: 3px 8px; }
+  .marker img { width: 24px; height: 24px; }
+  .marker .label { font-size: 11px; }
   #popup { min-width: 180px; max-width: 220px; padding: 12px; }
   .music-button { padding: 10px 14px; font-size: 15px; }
   .title-banner { font-size: 20px; }

@@ -1,5 +1,5 @@
 ﻿// Billders Map Adventure
-// Renders markers, popups, easter eggs, music toggle, and farewell modal handling.
+// Walkable Vignesh, markers, popups, easter eggs, music, farewell modal.
 
 const team = [
   { name: 'Tammi', x: 15, y: 28, avatar: 'Tammi.png', bio: 'Mint fox and best-friend banter buddy. PARIS/CA whiz and hilarious tester.' },
@@ -14,9 +14,14 @@ const team = [
   { name: 'Oleg', x: 65, y: 52, avatar: 'Oleg.png', bio: 'Lilac ferret. Interactive, funny Test Lead; often says "Exactly".' },
   { name: 'Sheri', x: 48, y: 38, avatar: 'Sheri.png', bio: 'Lavender tigress with French beret. PARIS queen and strong mentor.' },
   { name: 'Josh', x: 32, y: 65, avatar: 'Josh.png', bio: 'Sky-blue husky. Bills fan with two kittens; leaving soon too.' },
-  { name: 'Arlene', x: 75, y: 70, avatar: 'Arlene.png', bio: 'Pastel phoenix. Original PO with protective lioness energy.' },
-  { name: 'Vignesh', x: 10, y: 60, avatar: 'Vignesh.png', bio: 'Golden dog mascot. Happy-day greetings and six-year heart of the squad.' }
+  { name: 'Arlene', x: 75, y: 70, avatar: 'Arlene.png', bio: 'Pastel phoenix. Original PO with protective lioness energy.' }
 ];
+
+const player = { x: 10, y: 60, el: null };
+const pressedKeys = new Set();
+let lastShownName = null;
+const joined = new Set();
+const followers = [];
 
 window.addEventListener('load', () => {
   const farewellModal = document.getElementById('farewell-modal');
@@ -27,11 +32,8 @@ window.addEventListener('load', () => {
   farewellModal.style.display = 'flex';
 
   farewellCloseBtn.addEventListener('click', closeFarewell);
-
   farewellModal.addEventListener('click', (e) => {
-    if (e.target === farewellModal) {
-      closeFarewell();
-    }
+    if (e.target === farewellModal) closeFarewell();
   });
 
   if (openPopupBtn) {
@@ -41,6 +43,8 @@ window.addEventListener('load', () => {
   renderMarkers();
   createEasterEggs();
   setupMusic();
+  initPlayer();
+  startPlayerLoop();
 });
 
 function closeFarewell() {
@@ -54,13 +58,18 @@ function renderMarkers() {
   container.innerHTML = '';
 
   team.forEach((person) => {
+    if (joined.has(person.name)) return;
     const marker = document.createElement('div');
     marker.className = 'marker';
     marker.style.left = `${person.x}%`;
     marker.style.top = `${person.y}%`;
-    marker.textContent = person.name[0] || '';
+    marker.innerHTML = `
+      <img src="assets/Avatars/${person.avatar}" alt="${person.name} avatar" />
+      <span class="label">${person.name}</span>
+    `;
     marker.title = person.name;
     marker.setAttribute('aria-label', person.name);
+    marker.dataset.name = person.name;
     marker.addEventListener('click', () => showPopup(person));
     container.appendChild(marker);
   });
@@ -70,9 +79,9 @@ function showPopup(person) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card">
-      <button class="popup-close" aria-label="Close popup">×</button>
+      <button class="popup-close" aria-label="Close popup">x</button>
       <div class="avatar">
-        <img src="assets/avatars/${person.avatar}" alt="${person.name} avatar" />
+        <img src="assets/Avatars/${person.avatar}" alt="${person.name} avatar" />
       </div>
       <h3>${person.name}</h3>
       <p>${person.bio}</p>
@@ -81,6 +90,7 @@ function showPopup(person) {
 
   popup.classList.remove('hidden');
   popup.classList.add('show');
+  lastShownName = person.name;
 }
 
 let musicPlaying = false;
@@ -150,11 +160,12 @@ function showSecret(msg) {
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card" style="text-align:center;">
-      <button class="popup-close" aria-label="Close popup">×</button>
+      <button class="popup-close" aria-label="Close popup">x</button>
       ${msg}
     </div>`;
   popup.classList.remove('hidden');
   popup.classList.add('show');
+  lastShownName = null;
 }
 
 function hidePopup() {
@@ -189,3 +200,111 @@ document.getElementById('popup').addEventListener('click', (e) => {
     hidePopup();
   }
 });
+
+// Walkable Vignesh
+function initPlayer() {
+  const container = document.getElementById('markers');
+  const el = document.createElement('div');
+  el.id = 'player';
+  el.className = 'player';
+  container.appendChild(el);
+  player.el = el;
+  updatePlayerPosition();
+}
+
+function updatePlayerPosition() {
+  if (!player.el) return;
+  player.el.style.left = `${player.x}%`;
+  player.el.style.top = `${player.y}%`;
+}
+
+function startPlayerLoop() {
+  const speed = 0.25; // percent per frame
+
+  window.addEventListener('keydown', (e) => {
+    const key = e.key;
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd'].includes(key)) {
+      pressedKeys.add(key);
+      e.preventDefault();
+    }
+  });
+
+  window.addEventListener('keyup', (e) => {
+    pressedKeys.delete(e.key);
+  });
+
+  function tick() {
+    let dx = 0;
+    let dy = 0;
+    if (pressedKeys.has('ArrowLeft') || pressedKeys.has('a')) dx -= speed;
+    if (pressedKeys.has('ArrowRight') || pressedKeys.has('d')) dx += speed;
+    if (pressedKeys.has('ArrowUp') || pressedKeys.has('w')) dy -= speed;
+    if (pressedKeys.has('ArrowDown') || pressedKeys.has('s')) dy += speed;
+
+    if (dx !== 0 || dy !== 0) {
+      player.x = Math.min(99, Math.max(1, player.x + dx));
+      player.y = Math.min(99, Math.max(1, player.y + dy));
+      updatePlayerPosition();
+      positionFollowers();
+      checkMarkerProximity();
+    }
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+function checkMarkerProximity() {
+  let nearest = null;
+  let nearestDist = Infinity;
+
+  team.forEach((p) => {
+    if (joined.has(p.name)) return;
+    const dist = Math.hypot(player.x - p.x, player.y - p.y);
+    if (dist < nearestDist) {
+      nearestDist = dist;
+      nearest = p;
+    }
+  });
+
+  if (nearest && nearestDist < 3) {
+    if (nearest.name !== lastShownName) {
+      showPopup(nearest);
+      joinParty(nearest);
+    }
+  } else if (nearestDist > 4) {
+    lastShownName = null;
+  }
+}
+
+function joinParty(person) {
+  if (joined.has(person.name)) return;
+  joined.add(person.name);
+  removeMarker(person.name);
+  addFollower(person);
+}
+
+function removeMarker(name) {
+  const container = document.getElementById('markers');
+  const marker = container.querySelector(`.marker[data-name="${name}"]`);
+  if (marker) marker.remove();
+}
+
+function addFollower(person) {
+  const container = document.getElementById('markers');
+  const el = document.createElement('div');
+  el.className = 'follower';
+  el.style.backgroundImage = `url("assets/Avatars/${person.avatar}")`;
+  container.appendChild(el);
+  followers.push({ el, offset: followers.length + 1, person });
+  positionFollowers();
+}
+
+function positionFollowers() {
+  followers.forEach((f, idx) => {
+    const angle = Math.PI; // trail behind
+    const distance = 6 + idx * 3; // percent units
+    f.el.style.left = `${player.x - Math.cos(angle) * distance}%`;
+    f.el.style.top = `${player.y - Math.sin(angle) * distance}%`;
+  });
+}

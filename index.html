@@ -11,6 +11,11 @@
     <h1>ant Billders.stop</h1>
   </header>
 
+  <div class="controls">
+    <button id="open-popup-btn" class="ui-button">Open a popup</button>
+    <button id="music-btn" class="music-button">Play music</button>
+  </div>
+
   <div id="map-container">
     <img id="map" src="assets/map.png" alt="Rochester Map" />
     <div id="markers"></div>
@@ -21,11 +26,9 @@
   <div id="farewell-modal" class="modal hidden">
     <div class="modal-content">
       <p>Thank you for six unforgettable years. This team shaped who I am as a developer and as a person.<br>Once a Billder, always a Billder.</p>
-      <button onclick="closeFarewell()">Close</button>
+      <button id="farewell-close">Close</button>
     </div>
   </div>
-
-  <button id="music-btn" class="music-button">Play music</button>
   <script src="js/script.js"></script>
 </body>
 </html>
