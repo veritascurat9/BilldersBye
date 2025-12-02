@@ -7,7 +7,7 @@ body {
   overflow-x: hidden;
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 #map-container {
   position: relative;
@@ -296,6 +296,13 @@ body {
 @keyframes sparkleSpin {
   0% { transform: translateX(-50%) rotate(0deg); }
   100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 /* Responsive */

@@ -2,19 +2,136 @@
 // Walkable Vignesh, markers, popups, easter eggs, music, farewell modal.
 
 const team = [
-  { name: 'Tammi', x: 15, y: 28, avatar: 'Tammi.png', bio: 'Mint fox and best-friend banter buddy. PARIS/CA whiz and hilarious tester.' },
-  { name: 'Vanessa', x: 22, y: 35, avatar: 'Vanessa.png', bio: 'Teal duck scrum master. Ends standups with jokes and quotables.' },
-  { name: 'Rishitha', x: 30, y: 42, avatar: 'Rishitha.png', bio: 'Rose deer, gentle and newly a mom. Mentored by Vignesh; nickname: Samosa.' },
-  { name: 'Jarrett', x: 52, y: 18, avatar: 'Jarrett.png', bio: 'Golden owl. CA expert, pun king. Says "document document document".' },
-  { name: 'Andrew', x: 60, y: 30, avatar: 'Andrew.png', bio: 'Warm bear manager. Quiet strength and volunteer firefighter.' },
-  { name: 'Danielle', x: 70, y: 40, avatar: 'Danielle.png', bio: 'Peach rabbit PO, ex-tester, Billing knowledge queen. Powerpuff "Bubbles".' },
-  { name: 'Nicholas', x: 78, y: 22, avatar: 'Nicholas.png', bio: 'Cream beaver. Precise communicator and adaptable tester.' },
-  { name: 'Deepesh', x: 40, y: 55, avatar: 'Deepesh.png', bio: 'Lavender elephant. Quiet, steady helper who solves tough problems.' },
-  { name: 'Shreyas', x: 55, y: 60, avatar: 'Shreyas.png', bio: 'Grey moose. Calm Canadian Solutions Lead with deep experience.' },
-  { name: 'Oleg', x: 65, y: 52, avatar: 'Oleg.png', bio: 'Lilac ferret. Interactive, funny Test Lead; often says "Exactly".' },
-  { name: 'Sheri', x: 48, y: 38, avatar: 'Sheri.png', bio: 'Lavender tigress with French beret. PARIS queen and strong mentor.' },
-  { name: 'Josh', x: 32, y: 65, avatar: 'Josh.png', bio: 'Sky-blue husky. Bills fan with two kittens; leaving soon too.' },
-  { name: 'Arlene', x: 75, y: 70, avatar: 'Arlene.png', bio: 'Pastel phoenix. Original PO with protective lioness energy.' }
+  {
+    name: 'Tammi',
+    x: 15,
+    y: 28,
+    avatar: 'Tammi.png',
+    character: 'Mint Fox',
+    role: 'Tester, Banter Buddy, Best friend',
+    quirks: 'Funny, annoying and mad',
+    skills: 'Amazing PARIS domain knowledge. Billders will collapse without her.'
+  },
+  {
+    name: 'Vanessa',
+    x: 22,
+    y: 35,
+    avatar: 'Vanessa.png',
+    character: 'Teal Duck',
+    role: 'Scrum Master',
+    quirks: 'Ends standups with jokes and quotables',
+    skills: 'Keeps teams moving with calm facilitation and good humor'
+  },
+  {
+    name: 'Rishitha',
+    x: 30,
+    y: 42,
+    avatar: 'Rishitha.png',
+    character: 'Rose Deer',
+    role: 'Tester & mentee',
+    quirks: 'Gentle, newly a mom, nickname "Samosa"',
+    skills: 'Steady testing with warmth and care'
+  },
+  {
+    name: 'Jarrett',
+    x: 52,
+    y: 18,
+    avatar: 'Jarrett.png',
+    character: 'Golden Owl',
+    role: 'CA expert & pun king',
+    quirks: 'Catches bugs and says "document document document"',
+    skills: 'Deep CA knowledge and sharp, funny reviews'
+  },
+  {
+    name: 'Andrew',
+    x: 60,
+    y: 30,
+    avatar: 'Andrew.png',
+    character: 'Warm Bear',
+    role: 'Manager',
+    quirks: 'Quiet strength, volunteer firefighter',
+    skills: 'Steady leadership and calm guidance'
+  },
+  {
+    name: 'Danielle',
+    x: 70,
+    y: 40,
+    avatar: 'Danielle.png',
+    character: 'Peach Rabbit',
+    role: 'Product Owner, ex-tester',
+    quirks: 'Powerpuff "Bubbles", Billing knowledge queen',
+    skills: 'Bridges testing and product with deep billing instincts'
+  },
+  {
+    name: 'Nicholas',
+    x: 78,
+    y: 22,
+    avatar: 'Nicholas.png',
+    character: 'Cream Beaver',
+    role: 'Tester',
+    quirks: 'Precise communicator, adaptable teammate',
+    skills: 'Clear communication and reliable testing under pressure'
+  },
+  {
+    name: 'Deepesh',
+    x: 40,
+    y: 55,
+    avatar: 'Deepesh.png',
+    character: 'Lavender Elephant',
+    role: 'Engineer',
+    quirks: 'Quiet and steady helper',
+    skills: 'Solves tough problems with patience'
+  },
+  {
+    name: 'Shreyas',
+    x: 55,
+    y: 60,
+    avatar: 'Shreyas.png',
+    character: 'Grey Moose',
+    role: 'Solutions Lead',
+    quirks: 'Calm Canadian presence',
+    skills: 'Deep experience and smooth stakeholder handling'
+  },
+  {
+    name: 'Oleg',
+    x: 65,
+    y: 52,
+    avatar: 'Oleg.png',
+    character: 'Lilac Ferret',
+    role: 'Test Lead',
+    quirks: 'Interactive, funny, often says "Exactly"',
+    skills: 'Guides testing with humor and precision'
+  },
+  {
+    name: 'Sheri',
+    x: 48,
+    y: 38,
+    avatar: 'Sheri.png',
+    character: 'Lavender Tigress',
+    role: 'PARIS queen and mentor',
+    quirks: 'French beret flair and fierce mentorship',
+    skills: 'PARIS mastery and strong guidance'
+  },
+  {
+    name: 'Josh',
+    x: 32,
+    y: 65,
+    avatar: 'Josh.png',
+    character: 'Sky-blue Husky',
+    role: 'Tester',
+    quirks: 'Bills fan and cat dad of two',
+    skills: 'Dependable delivery even while planning a move'
+  },
+  {
+    name: 'Arlene',
+    x: 75,
+    y: 70,
+    avatar: 'Arlene.png',
+    character: 'Pastel Phoenix',
+    role: 'Original Product Owner',
+    quirks: 'Protective lioness energy',
+    skills: 'Product vision and nurturing the team'
+  }
 ];
 
 const player = { x: 10, y: 60, el: null };
@@ -22,14 +139,17 @@ const pressedKeys = new Set();
 let lastShownName = null;
 const joined = new Set();
 const followers = [];
+let introShown = false;
+let farewellShown = false;
+let fireworksCanvas = null;
+let fireworksCtx = null;
+let fireworksParticles = [];
+let fireworksActive = false;
 
 window.addEventListener('load', () => {
   const farewellModal = document.getElementById('farewell-modal');
   const farewellCloseBtn = document.getElementById('farewell-close');
   const openPopupBtn = document.getElementById('open-popup-btn');
-
-  farewellModal.classList.remove('hidden');
-  farewellModal.style.display = 'flex';
 
   farewellCloseBtn.addEventListener('click', closeFarewell);
   farewellModal.addEventListener('click', (e) => {
@@ -37,13 +157,14 @@ window.addEventListener('load', () => {
   });
 
   if (openPopupBtn) {
-    openPopupBtn.addEventListener('click', () => showPopup(team[0]));
+    openPopupBtn.addEventListener('click', showIntroPopup);
   }
 
   renderMarkers();
   createEasterEggs();
   setupMusic();
   initPlayer();
+  showIntroPopup();
   startPlayerLoop();
 });
 
@@ -51,6 +172,7 @@ function closeFarewell() {
   const modal = document.getElementById('farewell-modal');
   modal.classList.add('hidden');
   modal.style.display = 'none';
+  stopFireworks();
 }
 
 function renderMarkers() {
@@ -76,6 +198,10 @@ function renderMarkers() {
 }
 
 function showPopup(person) {
+  if (!introShown) {
+    showIntroPopup();
+    return;
+  }
   const popup = document.getElementById('popup');
   popup.innerHTML = `
     <div class="popup-card">
@@ -84,13 +210,31 @@ function showPopup(person) {
         <img src="assets/Avatars/${person.avatar}" alt="${person.name} avatar" />
       </div>
       <h3>${person.name}</h3>
-      <p>${person.bio}</p>
+      <p><strong>Character:</strong> ${person.character}</p>
+      <p><strong>Role:</strong> ${person.role}</p>
+      <p><strong>Qualities n Quirks:</strong> ${person.quirks}</p>
+      <p><strong>Skills:</strong> ${person.skills}</p>
     </div>
   `;
 
   popup.classList.remove('hidden');
   popup.classList.add('show');
   lastShownName = person.name;
+}
+
+function showIntroPopup() {
+  introShown = true;
+  const popup = document.getElementById('popup');
+  popup.innerHTML = `
+    <div class="popup-card">
+      <button class="popup-close" aria-label="Close popup">x</button>
+      <h3>Follow Along Vignesh's journey and collect Billders members</h3>
+      <p>Use the arrow keys or WASD to move and meet everyone on the map.</p>
+    </div>
+  `;
+  popup.classList.remove('hidden');
+  popup.classList.add('show');
+  lastShownName = null;
 }
 
 let musicPlaying = false;
@@ -282,6 +426,7 @@ function joinParty(person) {
   joined.add(person.name);
   removeMarker(person.name);
   addFollower(person);
+  checkCompletion();
 }
 
 function removeMarker(name) {
@@ -307,4 +452,111 @@ function positionFollowers() {
     f.el.style.left = `${player.x - Math.cos(angle) * distance}%`;
     f.el.style.top = `${player.y - Math.sin(angle) * distance}%`;
   });
+}
+
+function checkCompletion() {
+  if (farewellShown) return;
+  if (joined.size === team.length) {
+    triggerFarewell();
+  }
+}
+
+function triggerFarewell() {
+  farewellShown = true;
+  const modal = document.getElementById('farewell-modal');
+  modal.classList.remove('hidden');
+  modal.style.display = 'flex';
+  startFireworks();
+}
+
+function setupFireworksCanvas() {
+  if (fireworksCanvas) return;
+  fireworksCanvas = document.createElement('canvas');
+  fireworksCanvas.id = 'fireworks';
+  fireworksCanvas.style.position = 'fixed';
+  fireworksCanvas.style.inset = '0';
+  fireworksCanvas.style.pointerEvents = 'none';
+  fireworksCanvas.style.zIndex = '1000';
+  document.body.appendChild(fireworksCanvas);
+  fireworksCtx = fireworksCanvas.getContext('2d');
+  resizeFireworksCanvas();
+  window.addEventListener('resize', resizeFireworksCanvas);
+}
+
+function resizeFireworksCanvas() {
+  if (!fireworksCanvas) return;
+  fireworksCanvas.width = window.innerWidth;
+  fireworksCanvas.height = window.innerHeight;
+}
+
+function startFireworks(duration = 7000) {
+  setupFireworksCanvas();
+  fireworksActive = true;
+  fireworksParticles = [];
+  const endTime = performance.now() + duration;
+
+  function createBurst() {
+    if (!fireworksCanvas) return;
+    const x = Math.random() * fireworksCanvas.width;
+    const y = Math.random() * fireworksCanvas.height * 0.6;
+    const colors = ['#ff6b6b', '#ffd166', '#6fffe9', '#a29bfe', '#f8c291', '#f5d547'];
+    const count = 16 + Math.floor(Math.random() * 12);
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count;
+      const speed = 2 + Math.random() * 3;
+      fireworksParticles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        alpha: 1,
+        decay: 0.008 + Math.random() * 0.01,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+  }
+
+  function frame(now) {
+    if (!fireworksActive || !fireworksCtx || !fireworksCanvas) return;
+    fireworksCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+
+    if (Math.random() < 0.18) {
+      createBurst();
+    }
+
+    fireworksParticles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.02;
+      p.alpha -= p.decay;
+    });
+
+    fireworksParticles = fireworksParticles.filter((p) => p.alpha > 0);
+
+    fireworksParticles.forEach((p) => {
+      fireworksCtx.save();
+      fireworksCtx.globalAlpha = p.alpha;
+      fireworksCtx.fillStyle = p.color;
+      fireworksCtx.beginPath();
+      fireworksCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      fireworksCtx.fill();
+      fireworksCtx.restore();
+    });
+
+    if (now < endTime || fireworksParticles.length > 0) {
+      requestAnimationFrame(frame);
+    } else {
+      stopFireworks();
+    }
+  }
+
+  requestAnimationFrame(frame);
+}
+
+function stopFireworks() {
+  fireworksActive = false;
+  fireworksParticles = [];
+  if (fireworksCtx && fireworksCanvas) {
+    fireworksCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+  }
 }
