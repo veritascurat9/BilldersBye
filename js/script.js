@@ -9,8 +9,7 @@ const team = [
     avatar: 'Tammi.png',
     character: 'Mint Fox',
     role: 'Tester, Banter Buddy, Best friend',
-    quirks: 'Funny, annoying and mad',
-    skills: 'Amazing PARIS domain knowledge. Billders will collapse without her.'
+    powers: 'Funny, annoying and mad; Amazing PARIS domain knowledge. Billders will collapse without her.'
   },
   {
     name: 'Vanessa',
@@ -18,9 +17,8 @@ const team = [
     y: 35,
     avatar: 'Vanessa.png',
     character: 'Teal Duck',
-    role: 'Scrum Master',
-    quirks: 'Ends standups with jokes and quotables',
-    skills: 'Keeps teams moving with calm facilitation and good humor'
+    role: 'Scrum Master & Dad Jokes Generator, runs our circus',
+    powers: 'Brings harmony wit and flow to the team. The bridge with dad jokes and dreary pokes. Her SM role is golden era Billders'
   },
   {
     name: 'Rishitha',
@@ -28,9 +26,8 @@ const team = [
     y: 42,
     avatar: 'Rishitha.png',
     character: 'Rose Deer',
-    role: 'Tester & mentee',
-    quirks: 'Gentle, newly a mom, nickname "Samosa"',
-    skills: 'Steady testing with warmth and care'
+    role: 'Dev,Previously [Mentee],Newly [Mom]',
+    powers: 'Gentle, nickname "Samosa"; steady coder with warmth and care. '
   },
   {
     name: 'Jarrett',
@@ -38,9 +35,8 @@ const team = [
     y: 18,
     avatar: 'Jarrett.png',
     character: 'Golden Owl',
-    role: 'CA expert & pun king',
-    quirks: 'Catches bugs and says "document document document"',
-    skills: 'Deep CA knowledge and sharp, funny reviews'
+    role: 'Dev,Previously [SL,Mentor], CA KING, Cat dad, Mr Venerated',
+    powers: 'CA knowledge so deep you will need a telescope to guess depth. Extremely sharp and perceptive, says "document" alot;tries to come off neutral but is very fuzzy and warm'
   },
   {
     name: 'Andrew',
@@ -48,9 +44,8 @@ const team = [
     y: 30,
     avatar: 'Andrew.png',
     character: 'Warm Bear',
-    role: 'Manager',
-    quirks: 'Quiet strength, volunteer firefighter',
-    skills: 'Steady leadership and calm guidance'
+    role: 'Manager, Volunteer firefighter , Amazing Dad',
+    powers: 'Quiet strength; steady leadership and gentle guidance. Anxiety is scared of him cuz he is so cool and collected. Unanimously favorite Billders Manager in history.'
   },
   {
     name: 'Danielle',
@@ -58,9 +53,8 @@ const team = [
     y: 40,
     avatar: 'Danielle.png',
     character: 'Peach Rabbit',
-    role: 'Product Owner, ex-tester',
-    quirks: 'Powerpuff "Bubbles", Billing knowledge queen',
-    skills: 'Bridges testing and product with deep billing instincts'
+    role: 'Product Owner, Previously [Tester], Powerpuff "Bubbles", Dance Mom',
+    powers: 'Bridges stakeholders,design and devs with deep billing knowledge. Conducts Story elab like a smooth orchestra.Warm.'
   },
   {
     name: 'Nicholas',
@@ -68,9 +62,8 @@ const team = [
     y: 22,
     avatar: 'Nicholas.png',
     character: 'Cream Beaver',
-    role: 'Tester',
-    quirks: 'Precise communicator, adaptable teammate',
-    skills: 'Clear communication and reliable testing under pressure'
+    role: 'Developer , Long Islander, Previously [Mentee]',
+    powers: 'Consice King, adaptable teammate; clear communicator and reliable coder under pressure. '
   },
   {
     name: 'Deepesh',
@@ -78,9 +71,8 @@ const team = [
     y: 55,
     avatar: 'Deepesh.png',
     character: 'Lavender Elephant',
-    role: 'Engineer',
-    quirks: 'Quiet and steady helper',
-    skills: 'Solves tough problems with patience'
+    role: 'Developer, Previously [Mentee]',
+    powers: 'Truly a team player, will take any task in stride and do it excellently. Very Calm.'
   },
   {
     name: 'Shreyas',
@@ -88,9 +80,8 @@ const team = [
     y: 60,
     avatar: 'Shreyas.png',
     character: 'Grey Moose',
-    role: 'Solutions Lead',
-    quirks: 'Calm Canadian presence',
-    skills: 'Deep experience and smooth stakeholder handling'
+    role: 'Solutions Lead, Previously [Dev], Always buried in snow',
+    powers: 'Calm Canadian presence; deep experience, steady straightforward leader, easily likable.'
   },
   {
     name: 'Oleg',
@@ -98,9 +89,8 @@ const team = [
     y: 52,
     avatar: 'Oleg.png',
     character: 'Lilac Ferret',
-    role: 'Test Lead',
-    quirks: 'Interactive, funny, often says "Exactly"',
-    skills: 'Guides testing with humor and precision'
+    role: 'Application Test Lead, Katana Collector',
+    powers: 'Interactive, funny, often says "Exactly", Automation test speedrunner'
   },
   {
     name: 'Sheri',
@@ -108,9 +98,8 @@ const team = [
     y: 38,
     avatar: 'Sheri.png',
     character: 'Lavender Tigress',
-    role: 'PARIS queen and mentor',
-    quirks: 'French beret flair and fierce mentorship',
-    skills: 'PARIS mastery and strong guidance'
+    role: 'Dev ,PARIS Queen, Previously[Mentor]',
+    powers: 'PARIS mastery and strong guidance. Always wants the best for everyone. Honesty dispenser — push button, receive truth.'
   },
   {
     name: 'Josh',
@@ -118,9 +107,8 @@ const team = [
     y: 65,
     avatar: 'Josh.png',
     character: 'Sky-blue Husky',
-    role: 'Tester',
-    quirks: 'Bills fan and cat dad of two',
-    skills: 'Dependable delivery even while planning a move'
+    role: 'Developer, PARIS prince, Previously[Mentee], Newly [Cat dad], Bills fan',
+    powers: 'Warm , always smiling ,says "Go bills" alot. Clever innovative reliable coder'
   },
   {
     name: 'Arlene',
@@ -128,9 +116,8 @@ const team = [
     y: 70,
     avatar: 'Arlene.png',
     character: 'Pastel Phoenix',
-    role: 'Original Product Owner',
-    quirks: 'Protective lioness energy',
-    skills: 'Product vision and nurturing the team'
+    role: 'Previously [Product Owner] , Soon-to-be [Enjoying Retirement]',
+    powers: 'Wise,warm and Watchful. Blunt like a brick, loyal amd warm like a protective lioness. Knows how to celebrate victory in terms of how much dolla dolla bills we rake in as a team'
   }
 ];
 
@@ -141,6 +128,7 @@ const joined = new Set();
 const followers = [];
 let introShown = false;
 let farewellShown = false;
+let farewellPending = false;
 let fireworksCanvas = null;
 let fireworksCtx = null;
 let fireworksParticles = [];
@@ -161,7 +149,6 @@ window.addEventListener('load', () => {
   }
 
   renderMarkers();
-  createEasterEggs();
   setupMusic();
   initPlayer();
   showIntroPopup();
@@ -212,8 +199,7 @@ function showPopup(person) {
       <h3>${person.name}</h3>
       <p><strong>Character:</strong> ${person.character}</p>
       <p><strong>Role:</strong> ${person.role}</p>
-      <p><strong>Qualities n Quirks:</strong> ${person.quirks}</p>
-      <p><strong>Skills:</strong> ${person.skills}</p>
+      <p><strong>Powers:</strong> ${person.powers}</p>
     </div>
   `;
 
@@ -264,58 +250,14 @@ function setupMusic() {
   };
 }
 
-function createEasterEggs() {
-  const container = document.getElementById('markers');
-
-  const codeTile = document.createElement('div');
-  codeTile.className = 'marker easter';
-  codeTile.style.left = '58%';
-  codeTile.style.top = '26%';
-  codeTile.textContent = '*';
-  codeTile.addEventListener('click', () => showSecret('You discovered a Billders Codenames word: <strong>INVOICE</strong>!'));
-  container.appendChild(codeTile);
-
-  const paris = document.createElement('div');
-  paris.className = 'marker easter';
-  paris.style.left = '48%';
-  paris.style.top = '34%';
-  paris.textContent = '*';
-  paris.addEventListener('click', () => showSecret("Sheri's PARIS scroll: <em>Knowledge is power.</em>"));
-  container.appendChild(paris);
-
-  const ca = document.createElement('div');
-  ca.className = 'marker easter';
-  ca.style.left = '52%';
-  ca.style.top = '14%';
-  ca.textContent = '*';
-  ca.addEventListener('click', () => showSecret("You found the CA King's badge!"));
-  container.appendChild(ca);
-
-  const spark = document.createElement('div');
-  spark.className = 'marker sparkle';
-  spark.style.left = '10%';
-  spark.style.top = '56%';
-  spark.textContent = '*';
-  spark.addEventListener('click', () => showSecret('Sparkle aura activated for Vignesh!'));
-  container.appendChild(spark);
-}
-
-function showSecret(msg) {
-  const popup = document.getElementById('popup');
-  popup.innerHTML = `
-    <div class="popup-card" style="text-align:center;">
-      <button class="popup-close" aria-label="Close popup">x</button>
-      ${msg}
-    </div>`;
-  popup.classList.remove('hidden');
-  popup.classList.add('show');
-  lastShownName = null;
-}
-
 function hidePopup() {
   const popup = document.getElementById('popup');
+  const wasVisible = !popup.classList.contains('hidden');
   popup.classList.add('hidden');
   popup.classList.remove('show');
+  if (wasVisible && farewellPending && !farewellShown) {
+    triggerFarewell();
+  }
 }
 
 document.addEventListener('keydown', (e) => {
@@ -457,12 +399,13 @@ function positionFollowers() {
 function checkCompletion() {
   if (farewellShown) return;
   if (joined.size === team.length) {
-    triggerFarewell();
+    farewellPending = true;
   }
 }
 
 function triggerFarewell() {
   farewellShown = true;
+  farewellPending = false;
   const modal = document.getElementById('farewell-modal');
   modal.classList.remove('hidden');
   modal.style.display = 'flex';
